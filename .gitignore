@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data (large files — tracked via DVC or downloaded)
+data/raw/
+data/cleaned/
+data/deduped/
+data/filtered/
+data/processed/
+
+# Model artifacts
+checkpoints/
+exports/
+*.pt
+*.pth
+*.onnx
+*.bin
+
+# Tokenizer artifacts (optional: commit the trained tokenizer)
+# tokenizer/*.json
+
+# Logs
+logs/
+wandb/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+*.key

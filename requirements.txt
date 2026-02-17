@@ -1,0 +1,19 @@
+# Core
+torch>=2.2.0
+numpy>=1.24.0
+
+# Configuration
+pyyaml>=6.0
+
+# Logging (optional)
+# wandb>=0.16.0
+
+# Testing
+pytest>=7.0.0
+
+# Triton (optional, for fused kernels on GPU)
+# triton>=2.1.0
+
+# ONNX export (optional)
+# onnx>=1.15.0
+# onnxruntime>=1.17.0

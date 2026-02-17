@@ -1,0 +1,70 @@
+# Swahili-100 Large Model Configuration
+# Scaled-up variant — use only if budget allows.
+
+project:
+  name: "swahili-100-large"
+  seed: 42
+  output_dir: "checkpoints"
+  log_dir: "logs"
+
+data:
+  train_path: "data/processed/train"
+  val_path: "data/processed/val"
+  tokenizer_path: "tokenizer/swahili_bpe.json"
+  max_seq_len: 2048
+  num_workers: 4
+
+model:
+  vocab_size: 16384
+  d_model: 1024
+  n_layers: 24
+  n_heads: 16
+  n_kv_heads: 4
+  d_ff: 4096
+  max_seq_len: 2048
+  rope_theta: 10000.0
+  norm_eps: 1.0e-6
+  dropout: 0.0
+  tie_embeddings: true
+  qk_norm: true
+  use_moe: false
+  moe_num_experts: 8
+  moe_top_k: 2
+  moe_capacity_factor: 1.25
+  use_mtp: false
+  mtp_num_heads: 2
+
+training:
+  total_steps: 30000
+  batch_size: 128
+  micro_batch_size: 4
+  gradient_accumulation_steps: 32
+  learning_rate: 2.0e-4
+  min_lr: 2.0e-5
+  warmup_steps: 750
+  weight_decay: 0.1
+  grad_clip: 1.0
+  precision: "bf16"
+
+optimizer:
+  type: "adamw"
+  betas: [0.9, 0.95]
+  eps: 1.0e-8
+
+scheduler:
+  type: "cosine"
+  warmup_steps: 750
+
+checkpointing:
+  save_every: 2000
+  keep_last: 3
+  gradient_checkpointing: true
+
+logging:
+  log_every: 10
+  eval_every: 500
+  wandb_project: "swahili-100"
+  wandb_entity: null
+
+evaluation:
+  val_steps: 50
